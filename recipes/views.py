@@ -9,7 +9,7 @@ def home(request):
     
 # Create your views here.
 def recipe(request, id):
-    return render(request, 'recipes/pages/home.html', context={
+    return render(request, 'recipes/pages/recipe-view.html', context={
             'name': 'Ramon Santos',
         },
     status=200)
