@@ -6,3 +6,10 @@ def home(request):
             'name': 'Ramon Santos',
         },
     status=200)
+    
+# Create your views here.
+def recipe(request, id):
+    return render(request, 'recipes/pages/home.html', context={
+            'name': 'Ramon Santos',
+        },
+    status=200)
