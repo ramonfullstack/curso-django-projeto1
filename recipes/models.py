@@ -10,7 +10,7 @@ class Category(models.Model):
         return self.name
 
 class Recipe(models.Model):
-    tile = models.CharField(max_length=65)
+    title = models.CharField(max_length=65)
     description = models.CharField(max_length=165)
     slug = models.SlugField()
     preparation_time = models.IntegerField()
@@ -18,7 +18,7 @@ class Recipe(models.Model):
     servings = models.IntegerField()
     servings_unit = models.CharField(max_length=65)
     preparation_steps = models.TextField()
-    preparation_time_is_html = models.BooleanField(default=False)
+    preparation_steps_is_html = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
     is_published = models.BooleanField(default=False)
@@ -27,7 +27,7 @@ class Recipe(models.Model):
         Category, on_delete=models.SET_NULL, null=True, blank=True
     )
     author = models.ForeignKey(
-        User, on_delete=models.SET_NULL, null=True
+        User, on_delete=models.SET_NULL, null=True, blank=True
     )
     
     def __str__(self):
