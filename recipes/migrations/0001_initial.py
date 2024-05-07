@@ -25,7 +25,7 @@ class Migration(migrations.Migration):
             name='Recipe',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('tile', models.CharField(max_length=65)),
+                ('title', models.CharField(max_length=65)),
                 ('description', models.CharField(max_length=165)),
                 ('slug', models.SlugField()),
                 ('preparation_time', models.IntegerField()),

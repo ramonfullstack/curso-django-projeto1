@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
         ),
         migrations.RenameField(
             model_name='recipe',
-            old_name='tile',
+            old_name='title',
             new_name='title',
         ),
         migrations.AlterField(
