@@ -39,3 +39,6 @@ def recipe(request, id):
             'is_detail_page': True,
         },
     status=200)
+
+def search(request):
+    return render(request, 'recipes/pages/search.html')
