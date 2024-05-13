@@ -5,8 +5,8 @@ from django.http import HttpResponse, Http404
 from django.db.models import Q
 from django.core.paginator import Paginator
 from utils.pagination import make_pagination, make_pagination_range
-
-PER_PAGE = 9
+import os
+PER_PAGE = os.environ.get('PER_PAGE', 6)
 
 def home(request):
     recipes = Recipe.objects.filter(is_published=True).order_by('id')
