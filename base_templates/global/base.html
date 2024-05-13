@@ -14,11 +14,8 @@
     {% include "recipes/partials/search.html" %}
     
     <main class="main-content-container">
-        <div class="main-content main-content-list container">
-            
-            {% block content %}{% endblock content %}
-            
-        </div>  
+        {% block content %}{% endblock content %}
+        {% include 'recipes/partials/pagination.html' %}
     </main>
 </body>
 
