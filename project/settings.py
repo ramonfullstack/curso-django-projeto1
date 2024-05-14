@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #a gente tem apps também
     'recipes',
+    'authors',
 ]
 
 MESSAGE_TAGS = {
