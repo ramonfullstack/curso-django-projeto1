@@ -5,13 +5,20 @@ from django.http import HttpResponse, Http404
 from django.db.models import Q
 from django.core.paginator import Paginator
 from utils.pagination import make_pagination, make_pagination_range
+from django.contrib import messages
 import os
-PER_PAGE = os.environ.get('PER_PAGE', 6)
+
+PER_PAGE = int(os.environ.get('PER_PAGE', 6))
+print(PER_PAGE, type(PER_PAGE))
 
 def home(request):
     recipes = Recipe.objects.filter(is_published=True).order_by('id')
     
     page_obj, pagination_range = make_pagination(request, recipes, PER_PAGE)
+    
+    messages.error(request, 'Que legal foi um erro')
+    messages.success(request, 'Epa, você foi pesquisar algo que eu vi.')
+    messages.info(request, 'Epa, você foi pesquisar algo que eu vi.')
     
     return render(request, 'recipes/pages/home.html', context={
         'recipes': page_obj,
@@ -47,6 +54,8 @@ def recipe(request, id):
     status=200)
 
 def search(request):
+    messages.success(request, 'EPA VOCÊ VEIO PESQUISAR ALGO...')
+    
     search_term = request.GET.get('q', '').strip()
     
     if not search_term:
