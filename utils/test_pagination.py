@@ -1,4 +1,7 @@
 from unittest import TestCase
+from unittest.mock import patch
+
+from django.urls import reverse
 from utils.pagination import make_pagination_range   
 
 class PaginationTest(TestCase):
@@ -100,4 +103,26 @@ class PaginationTest(TestCase):
             current_page=21,
         )['pagination']
         self.assertEqual([17, 18, 19, 20], pagination)
+        
+    def test_invalid_page_query_uses_page_one(self):
+        for i in range(8):
+            kwargs = {'slug': f'r{i}', 'author_data': {'username': f'u{i}'}}
+            self.make_recipe(**kwargs)
+
+        with patch('recipes.views.PER_PAGE', new=3):
+            response = self.client.get(reverse('recipes:home') + '?page=12A')
+            self.assertEqual(
+                response.context['recipes'].number,
+                1
+            )
+            response = self.client.get(reverse('recipes:home') + '?page=2')
+            self.assertEqual(
+                response.context['recipes'].number,
+                2
+            )
+            response = self.client.get(reverse('recipes:home') + '?page=3')
+            self.assertEqual(
+                response.context['recipes'].number,
+                3
+            )
         
