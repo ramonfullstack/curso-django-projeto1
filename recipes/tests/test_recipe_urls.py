@@ -4,10 +4,6 @@ from django.urls import resolve, reverse
 from recipes import views 
 
 class RecipeInitialTest(TestCase):
-    def test_the_pytest_is_ok(self):
-        print("TESTE EXECUTANDO...")
-        assert 1 == 1, 'Um é igual a um'
-        
     def test_recipe_home_url_is_correct(self):
         url = reverse('recipes:home')
         self.assertEqual(url, '/')
