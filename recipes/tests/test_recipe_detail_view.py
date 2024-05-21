@@ -12,7 +12,7 @@ class RecipeDetailViewTest(RecipeTestBase):
         self.assertEqual(url, '/recipes/1/')
         
     def test_recipe_detail_view_returns_404_if_no_recipes_found(self):
-        url = reverse('recipes:recipe', kwargs={'id': 1000})
+        url = reverse('recipes:recipe', kwargs={'id': 2500})
         response = self.client.get(
             url
         )
