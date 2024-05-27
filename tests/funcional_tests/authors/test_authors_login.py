@@ -30,7 +30,8 @@ class AuthorsLoginTest(AuthorsBaseTest):
         form.submit()
 
         # Usuário vê a mensagem de login com sucesso e seu nome
+        text_find = self.browser.find_element(By.TAG_NAME, 'body').text
         self.assertIn(
             f'Your are logged in with {user.username}.',
-            self.browser.find_element(By.TAG_NAME, 'body').text
+            text_find
         )
