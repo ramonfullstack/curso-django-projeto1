@@ -403,7 +403,9 @@ h6 {
     color: var(--color-error-dark);
   }
   
-  .form-content input {
+.form-content input,
+.form-content textarea,
+.form-content select {
     width: 100%;
     padding: 1rem;
     border-radius: 0.4rem;
@@ -453,3 +455,21 @@ h6 {
     list-style-type: none;
     margin: 1rem 0;
   }
+
+  .span-2 {
+    grid-column: span 2;
+  }
+
+  .left {
+    text-align: left;
+  }
+  
+  img {
+    max-width: 100%;
+  }
+  
+  a {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+  
