@@ -5,14 +5,14 @@ from unittest import skip
     
 class RecipeDetailViewTest(RecipeTestBase):
     def test_recipe_detail_view_function_is_correct(self):
-        url = reverse('recipes:recipe', kwargs={'id': 1})
+        url = reverse('recipes:recipe', kwargs={'pk': 1})
         view = resolve(
             url
         )
         self.assertEqual(url, '/recipes/1/')
         
     def test_recipe_detail_view_returns_404_if_no_recipes_found(self):
-        url = reverse('recipes:recipe', kwargs={'id': 2500})
+        url = reverse('recipes:recipe', kwargs={'pk': 2500})
         response = self.client.get(
             url
         )
@@ -28,7 +28,7 @@ class RecipeDetailViewTest(RecipeTestBase):
             reverse(
                 'recipes:recipe',
                 kwargs={
-                    'id': recipe.category.id
+                    'pk': recipe.category.id
                 }
             )
         )
@@ -45,7 +45,7 @@ class RecipeDetailViewTest(RecipeTestBase):
             reverse(
                 'recipes:recipe',
                 kwargs={
-                    'id': recipe.id
+                    'pk': recipe.id
                 }
             )
         )
